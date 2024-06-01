@@ -1,13 +1,22 @@
 import express from "express";
 import {PORT, mongoURL} from "./config.js";
 import mongoose from "mongoose";
-import {Book} from "./models/bookModels.js";
+import bookRoutes from "../backend/routes/bookRoutes.js";
+import cors from "cors";
 
 //An Express application instance is created.
 const app = express();
 
 //adds the middleware to parse JSON bodies of incoming requests. Without this, request.body will be undefined
 app.use(express.json());
+
+//Cross origin resource sharing is a browser security feature that restricts 
+//web pages from making requests to a different domain than the one that served the web page
+app.use(cors({
+    origin: "http://localhost:3000", // Allow only requests from this origin
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow only these methods
+    allowedHeaders: "Content-Type" //specifies the media type of the resource or the data being sent. 
+}))
 
 //Route handler for HTTP GET requests to the root URL ('/')
 app.get('/', (request, response) => {
@@ -16,73 +25,11 @@ app.get('/', (request, response) => {
     //Represents the outgoing HTTP response that you'll send back to the client
     console.log(response);
     //Sends a response with a status code and the body text "Welcome to MERN".
-    return response.status(200).send("Welcome to MERN");
+    return response.status(234).send("Welcome to MERN");
 })
 
-//Route to save a new Book
-app.post('/books', async (request, response) => {
-    try {
-        console.log(request.body);
-
-        // Destructure the fields from the parsed JSON data in request.body.
-        const {title, author, publishedYear} = request.body;
-
-        //checks if the fields are missing in the request body
-        if (!title || !author || !publishedYear) {
-            return response.status(400).send("Please provide all the required fields");
-        }
-
-        //creates a new book object with the data from the request body
-        const newBook = { title, author, publishedYear };
-
-        //uses the Book model's create method to save the new book to the database
-        const book = await Book.create(newBook);
-
-        //If the book is successfully created, it sends a 201 Created response with the new book object
-        return response.status(201).send(book);
-    }
-    catch(error) {
-        console.log(error.message);
-        return response.status(500).send({ message: error.message });
-    }
-})
-
-//Route for get all books from database
-app.get("/books", async (request, response) => {
-    try {
-        // Use the Book model to find all documents in the 'books' collection
-        const books = await Book.find({});
-
-        // Send a 200 OK response with a JSON object data
-        return response.status(200).json({ 
-            count: books.length, // Number of books found
-            data: books //Array of book document
-        });
-
-    }
-    catch (error) {
-        console.log(error.message);
-        return response.status(500).send({ message: error.message });
-    }
-})
-
-//Route for get book from database using id
-app.get("/books/:id", async (request, response) => {
-    try {
-        //Extract the ID from the request parameters
-        const { id } = request.params;
-
-        //Find the book in the database using the extracted ID
-        const books = await Book.findByID(id);
-
-        // Send a 200 OK response with a JSON data
-        return response.status(200).json(books);
-    }
-    catch (error) {
-        console.log(error.message);
-        return response.status(500).send({ message: error.message });
-    }
-})
+// Mount the bookRoutes router at '/books'
+app.use('/books', bookRoutes);
 
 
 // Establish connection to MongoDB database using Mongoose
