@@ -13,14 +13,6 @@ const App = () => {
   return (
     //Single Page Application Route
     <div>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/books/create">Create Book</Link></li>
-          {/* Add more links as needed */}
-        </ul>
-      </nav>
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/books/create" element={<CreateBook />} />
@@ -28,7 +20,6 @@ const App = () => {
         <Route path="/books/edit/:id" element={<EditBook />} />
         <Route path="/books/delete/:id" element={<DeleteBook />} />
       </Routes>
-
     </div>
     
   )
