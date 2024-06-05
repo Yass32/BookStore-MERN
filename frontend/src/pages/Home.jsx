@@ -37,34 +37,44 @@ const Home = () => {
             </Link>
         </div>
         {loading? (<Spinner/>) : (
-            <table className='w-full text-left text-gray-500 dark:text-gray-400'>
+            <table className='w-full text-gray-500 border-separate border-spacing-2'>
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Publish Year</th>
-                        <th>Operations</th>
+                        <th className='border border-slate-600 rounded-md'>No</th>
+                        <th className='border border-slate-600 rounded-md'>Title</th>
+                        <th className='border border-slate-600 rounded-md max-md:hidden'>Author</th>
+                        <th className='border border-slate-600 rounded-md max-md:hidden'>Publish Year</th>
+                        <th className='border border-slate-600 rounded-md'>Operations</th>
                     </tr>
                 </thead>
                 <tbody>
                     {books.map((book, index) => {
                         return (
-                            <tr key={book.id}>
-                                <td>{index + 1}</td>
-                                <td>{book.title}</td>
-                                <td>{book.author}</td>
-                                <td>{book.publishedYear}</td>
-                                <td className='flex justify-around items-center'>
-                                    <Link to={`/books/details/${book.id}`} className='text-green-800 text-4xl hover:scale-110'>
-                                        <BsInfoCircle className='text-2xl' />
-                                    </Link>
-                                    <Link to={`/books/edit/${book.id}`} className='text-yellow-500 text-4xl hover:scale-110'>
-                                        <AiOutlineEdit className='text-2xl ' />
-                                    </Link>
-                                    <Link to={`/books/delete/${book.id}`} className='text-red-700 text-4xl hover:scale-110'>
-                                        <MdOutlineDelete className='text-2xl' />
-                                    </Link>
+                            <tr key={book.id} className='h-8 text-center'>
+                                <td className='border border-slate-700 rounded-md '>
+                                    {index + 1}
+                                </td>
+                                <td className='border border-slate-700 rounded-md'>
+                                    {book.title}
+                                </td>
+                                <td className='border border-slate-700 rounded-md max-md:hidden'>
+                                    {book.author}
+                                </td>
+                                <td className='border border-slate-700 rounded-md max-md:hidden'>
+                                    {book.publishedYear}
+                                </td>
+                                <td className='border border-slate-700 rounded-md'>
+                                    <div className='flex justify-evenly'>
+                                        <Link to={`/books/details/${book.id}`}>
+                                            <BsInfoCircle className='text-2xl text-green-800 hover:scale-110' />
+                                        </Link>
+                                        <Link to={`/books/edit/${book.id}`}>
+                                            <AiOutlineEdit className='text-2xl text-yellow-500 hover:scale-110 ' />
+                                        </Link>
+                                        <Link to={`/books/delete/${book.id}`}>
+                                            <MdOutlineDelete className='text-2xl text-red-700 hover:scale-110' />
+                                        </Link>
+                                    </div>
                                 </td>
                             </tr>
                         )  
