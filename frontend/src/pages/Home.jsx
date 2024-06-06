@@ -17,8 +17,8 @@ const Home = () => {
             .get( "http://localhost:5555/books")
             .then((response) => {
                 setBooks(response.data.data);
-                console.log(books);
                 setLoading(false);
+                console.log(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -50,7 +50,7 @@ const Home = () => {
                 <tbody>
                     {books.map((book, index) => {
                         return (
-                            <tr key={book.id} className='h-8 text-center'>
+                            <tr key={book._id} className='h-8 text-center'>
                                 <td className='border border-slate-700 rounded-md '>
                                     {index + 1}
                                 </td>
@@ -65,13 +65,13 @@ const Home = () => {
                                 </td>
                                 <td className='border border-slate-700 rounded-md'>
                                     <div className='flex justify-evenly'>
-                                        <Link to={`/books/details/${book.id}`}>
+                                        <Link to={`/books/details/${book._id}`}>
                                             <BsInfoCircle className='text-2xl text-green-800 hover:scale-110' />
                                         </Link>
-                                        <Link to={`/books/edit/${book.id}`}>
+                                        <Link to={`/books/edit/${book._id}`}>
                                             <AiOutlineEdit className='text-2xl text-yellow-500 hover:scale-110 ' />
                                         </Link>
-                                        <Link to={`/books/delete/${book.id}`}>
+                                        <Link to={`/books/delete/${book._id}`}>
                                             <MdOutlineDelete className='text-2xl text-red-700 hover:scale-110' />
                                         </Link>
                                     </div>

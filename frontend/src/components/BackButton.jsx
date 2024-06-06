@@ -7,7 +7,7 @@ const BackButton = () => {
   return (
     <div>
         <Link to={"/"}>
-            <BsArrowLeft className='text-3xl mt-3 ml-3 text-black'/>
+            <BsArrowLeft className='text-3xl mt-3 ml-3 text-gray-300 bg-blue-950 w-[6%] rounded-md'/>
         </Link>
     </div>
   )
