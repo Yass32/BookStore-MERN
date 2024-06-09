@@ -26,7 +26,7 @@ const CreateBook = () => {
 
         setLoading(true);
         axios
-            .post( `http://localhost:5555/books/${userId}/add`, book)
+            .post( `http://localhost:5555/books/${userId}`, book)
             .then(() => {                
                 setLoading(false);
                 navigate(`/${userId}/home`);

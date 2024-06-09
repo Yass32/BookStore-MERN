@@ -8,17 +8,16 @@ import { Spinner } from '../components/Spinner';
 const ShowBook = () => {
     const [books, setBooks] = useState({});
     const [loading, setLoading] = useState(false);
-    const { id } = useParams();
+    const { userId, id } = useParams();
 
     console.log(id);
 
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`http://localhost:5555/books/${id}`)
+            .get(`http://localhost:5555/books/${userId}/${id}`)
             .then((response) => {
                 setBooks(response.data);
-                
                 setLoading(false);
                 console.log(books);
             })
@@ -30,7 +29,7 @@ const ShowBook = () => {
 
     return (
         <div className='p-4'>
-            <BackButton/>    
+            <BackButton userId={userId}/>    
             <h1 className='text-3xl my-8'>Book Details</h1>
             {loading ? (
                 <Spinner/>

@@ -20,9 +20,9 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/:userId/home" element={<Home />} />
         <Route path="/:userId/add" element={<AddBook />} />
-        <Route path="/books/details/:id" element={<ShowBook />} />
-        <Route path="/books/edit/:id" element={<EditBook />} />
-        <Route path="/books/delete/:id" element={<DeleteBook />} />
+        <Route path="/:userId/read/:id" element={<ShowBook />} />
+        <Route path="/:userId/update/:id" element={<EditBook />} />
+        <Route path="/:userId/delete/:id" element={<DeleteBook />} />
       </Routes>
     </div>
     

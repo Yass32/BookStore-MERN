@@ -12,12 +12,12 @@ const EditBook = () => {
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
-    const {id} = useParams();
+    const { userId, id } = useParams();
 
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`http://localhost:5555/books/${id}`)
+            .get(`http://localhost:5555/books/${userId}/${id}`)
             .then((response) => {
                 setTitle(response.data.title);
                 setAuthor(response.data.author);
@@ -41,13 +41,13 @@ const EditBook = () => {
 
         setLoading(true);
         axios
-            .put(`http://localhost:5555/books/${id}`, book)
+            .put(`http://localhost:5555/books/${userId}/${id}`, book)
             .then((response) => {
                 setTitle(response.data.title);
                 setAuthor(response.data.author);
                 setPublishedYear(response.data.publishedYear);
                 setLoading(false);
-                navigate("/");
+                navigate(`/${userId}/home`);
             })
             .catch((error) => {
                 console.log(error);

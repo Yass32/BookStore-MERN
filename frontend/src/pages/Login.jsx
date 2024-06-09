@@ -8,6 +8,7 @@ const Login = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState("");
 
     const navigate = useNavigate();
 
@@ -30,6 +31,7 @@ const Login = () => {
             })
             .catch((error) => {
                 console.log(error);
+                setMessage(error.response.data);
                 setLoading(false);
             })
 
@@ -64,6 +66,7 @@ const Login = () => {
                         />
                     </div>
                     <div className='py-6'>
+                        <p className='mb-3 text-red-600'>{message}</p>
                         <button className='mx-28 text-xl text-gray-300 bg-blue-950 rounded-md w-[60%] p-2' onClick={handleLogin}>
                             Sign in
                         </button>

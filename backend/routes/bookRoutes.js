@@ -63,7 +63,7 @@ router.post('/', async (request, response) => {
 })
 
 //Route to add a new Book
-router.post('/:userId/add', async (request, response) => {
+router.post('/:userId', async (request, response) => {
     try {
         console.log(request.body);
 
@@ -88,7 +88,7 @@ router.post('/:userId/add', async (request, response) => {
     }
     catch(error) {
         console.log(error.message);
-        return response.status(500).send({ message: error.message });
+        return response.status(500).json({ message: error.message });
     }
 })
 

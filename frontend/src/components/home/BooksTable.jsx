@@ -7,7 +7,7 @@ import {BsInfoCircle} from 'react-icons/bs';
 import {MdOutlineDelete} from 'react-icons/md';
 
 
-const BooksTable = ({ books }) => {
+const BooksTable = ({ books, userId }) => {
     return (
         <table className='w-full text-gray-500 border-separate border-spacing-2'>
             <thead>
@@ -37,13 +37,13 @@ const BooksTable = ({ books }) => {
                             </td>
                             <td className='border border-slate-700 rounded-md'>
                                 <div className='flex justify-evenly'>
-                                    <Link to={`/books/details/${book._id}`}>
+                                    <Link to={`/${userId}/read/${book._id}`}>
                                         <BsInfoCircle className='text-2xl text-green-800 hover:scale-110' />
                                     </Link>
-                                    <Link to={`/books/edit/${book._id}`}>
+                                    <Link to={`/${userId}/update/${book._id}`}>
                                         <AiOutlineEdit className='text-2xl text-yellow-500 hover:scale-110 ' />
                                     </Link>
-                                    <Link to={`/books/delete/${book._id}`}>
+                                    <Link to={`/${userId}/delete/${book._id}`}>
                                         <MdOutlineDelete className='text-2xl text-red-700 hover:scale-110' />
                                     </Link>
                                 </div>
