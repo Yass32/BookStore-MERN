@@ -1,7 +1,73 @@
 import express from 'express';
 import {Book} from '../models/bookModels.js';
+import {User} from '../models/userModels.js'
 
 const router = express.Router();
+
+//Route to register
+router.post('/register', async (request, response) => {
+    try {
+        console.log(request.body);
+
+        // Destructure the fields from the parsed JSON data in request.body.
+        const {username, password} = request.body;
+
+        //checks if the fields are missing in the request body
+        if (!username || !password) {
+            return response.status(400).send("Please provide all the required fields");
+        }
+
+        //creates a new user object with the data from the request body
+        const newUser = { username, password };
+
+        //uses the User model's create method to save the new book to the database
+        const user = await User.create(newUser);
+
+        //If the user is successfully created, it sends a 201 Created response with the new book object
+        return response.status(201).send(user);
+    }
+    catch(error) {
+        console.log(error.message);
+        return response.status(500).send({ message: error.message });
+    }
+})
+
+//Route to login
+router.post('/login', async (request, response) => {
+    try {
+        console.log(request.body);
+
+        // Destructure the fields from the parsed JSON data in request.body.
+        const {username, password} = request.body;
+
+        //checks if the fields are missing in the request body
+        if (!username || !password) {
+            return response.status(400).send("Please provide all the required fields");
+        }
+
+        // Find the user by username and password
+        const loggedUser = await User.findOne({ username, password });
+
+        // If user is not found, send a 400 response
+        if (!loggedUser) {
+            return res.status(400).send("Invalid username or password");
+        }
+
+        // If user is found, send a 200 response with the user details
+        return res.status(200).json({
+            message: "User logged in successfully",
+            user: {
+                id: user._id,
+                username: user.username
+                // Add other user details you want to return
+            }
+        });
+    }
+    catch(error) {
+        console.log(error.message);
+        return response.status(500).send({ message: error.message });
+    }
+})
 
 //Route to save a new Book
 router.post('/', async (request, response) => {

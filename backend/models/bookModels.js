@@ -17,6 +17,12 @@ const bookSchema = mongoose.Schema(
         publishedYear: {
             type: Number,
             required: true,
+        },
+        // Reference to the user who owns this book
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true,
         }
     },
     {
