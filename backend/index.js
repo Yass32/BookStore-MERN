@@ -25,7 +25,7 @@ app.get('/', (request, response) => {
     //Represents the outgoing HTTP response that you'll send back to the client
     console.log(response);
     //Sends a response with a status code and the body text "Welcome to MERN".
-    return response.status(234).send("Welcome to MERN");
+    return response.status(234).send("Welcome to MERN Book Store");
 })
 
 // Mount the bookRoutes router at '/books'

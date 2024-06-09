@@ -7,6 +7,7 @@ const userSchema = mongoose.Schema(
         username: {
             type: String,
             required: true,
+            unique: true,  // Ensure usernames are unique
         },
         // Define a 'password' field of type String, which is required.
         password: {
@@ -16,5 +17,5 @@ const userSchema = mongoose.Schema(
     }
 ) 
 
-// Create a Mongoose model called 'User' based on the 'bookSchema'
+// Create a Mongoose model called 'User' based on the 'userSchema'
 export const User = mongoose.model("User", userSchema);

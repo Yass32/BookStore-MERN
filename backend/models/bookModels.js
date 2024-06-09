@@ -19,7 +19,7 @@ const bookSchema = mongoose.Schema(
             required: true,
         },
         // Reference to the user who owns this book
-        user: {
+        userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
             required: true,

@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import BackButton from '../components/BackButton';
 import { Spinner } from '../components/Spinner';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CreateBook = () => {
     const [title, setTitle] = useState("");
@@ -12,6 +12,8 @@ const CreateBook = () => {
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
+
+    const { userId } = useParams();
 
     
 
@@ -24,10 +26,10 @@ const CreateBook = () => {
 
         setLoading(true);
         axios
-            .post(`http://localhost:5555/books`, book)
+            .post( `http://localhost:5555/books/${userId}/add`, book)
             .then(() => {                
                 setLoading(false);
-                navigate("/");
+                navigate(`/${userId}/home`);
             })
             .catch((error) => {
                 console.log(error);
@@ -41,7 +43,7 @@ const CreateBook = () => {
 
     return (
         <div className='p-4'>
-            <BackButton/>    
+            <BackButton userId={userId}/>    
             <h1 className='text-3xl my-8'>Add Book</h1>
             {loading ? (
                 <Spinner/>
