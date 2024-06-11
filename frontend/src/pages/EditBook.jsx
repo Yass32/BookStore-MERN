@@ -4,6 +4,7 @@ import axios from 'axios';
 import BackButton from '../components/BackButton';
 import { Spinner } from '../components/Spinner';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 const EditBook = () => {
     const [title, setTitle] = useState("");
@@ -13,6 +14,8 @@ const EditBook = () => {
 
     const navigate = useNavigate();
     const { userId, id } = useParams();
+
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
         setLoading(true);
@@ -26,6 +29,7 @@ const EditBook = () => {
             })
             .catch((error) => {
                 console.log(error);
+                
                 setLoading(false);
             })
     }, []);
@@ -47,10 +51,12 @@ const EditBook = () => {
                 setAuthor(response.data.author);
                 setPublishedYear(response.data.publishedYear);
                 setLoading(false);
+                enqueueSnackbar("Book updated successfully", { variant: "success"});
                 navigate(`/${userId}/home`);
             })
             .catch((error) => {
                 console.log(error);
+                enqueueSnackbar("Error", { variant: "error"});
                 setLoading(false);
             })
 

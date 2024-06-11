@@ -18,19 +18,8 @@ app.use(cors({
     allowedHeaders: "Content-Type" //specifies the media type of the resource or the data being sent. 
 }))
 
-//Route handler for HTTP GET requests to the root URL ('/')
-app.get('/', (request, response) => {
-    //Represents the incoming HTTP request, containing data about the request
-    console.log(request);
-    //Represents the outgoing HTTP response that you'll send back to the client
-    console.log(response);
-    //Sends a response with a status code and the body text "Welcome to MERN".
-    return response.status(234).send("Welcome to MERN Book Store");
-})
-
 // Mount the bookRoutes router at '/books'
 app.use('/books', bookRoutes);
-
 
 // Establish connection to MongoDB database using Mongoose
 mongoose

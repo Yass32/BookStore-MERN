@@ -4,13 +4,14 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import { Spinner } from '../components/Spinner';
+import { useSnackbar } from 'notistack';
 
 const ShowBook = () => {
     const [books, setBooks] = useState({});
     const [loading, setLoading] = useState(false);
     const { userId, id } = useParams();
 
-    console.log(id);
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
         setLoading(true);
@@ -23,6 +24,7 @@ const ShowBook = () => {
             })
             .catch((error) => {
                 console.log(error);
+                enqueueSnackbar("Error", { variant: "error"});
                 setLoading(false);
             })
     }, []);

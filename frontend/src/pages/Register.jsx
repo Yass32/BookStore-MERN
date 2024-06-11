@@ -26,6 +26,7 @@ const Register = () => {
             .then((response) => {                
                 setLoading(false);
                 const userId = response.data._id;
+                console.log(response.data);
                 navigate(`/${userId}/home`);
             })
             .catch((error) => {

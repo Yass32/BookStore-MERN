@@ -24,7 +24,7 @@ router.post('/register', async (request, response) => {
         const user = await User.create(newUser);
 
         //If the user is successfully created, it sends a 201 Created response with the new book object
-        return response.status(201).json({ message: 'User registered successfully', user });
+        return response.status(201).json(user);
     }
     catch(error) {
         console.log(error.message);
