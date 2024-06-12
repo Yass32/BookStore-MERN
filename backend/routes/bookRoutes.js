@@ -23,7 +23,7 @@ router.post('/register', async (request, response) => {
         //uses the User model's create method to save the new book to the database
         const user = await User.create(newUser);
 
-        //If the user is successfully created, it sends a 201 Created response with the new book object
+        //If  user is successfully created, a 201 Created response with the new book object is sent
         return response.status(201).json(user);
     }
     catch(error) {
