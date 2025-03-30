@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors({
     origin: "https://bookstore-mern-client.onrender.com", // Allow only requests from this origin
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow only these methods
-    allowedHeaders: "Content-Type" //specifies the media type of the resource or the data being sent. 
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 }))
 
 // Mount the bookRoutes router at '/books'

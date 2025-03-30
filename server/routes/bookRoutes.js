@@ -4,6 +4,28 @@ import {User} from '../models/userModels.js';
 
 const router = express.Router();
 
+//Route for get all books & user from database
+router.get("/", async (request, response) => {
+    try {
+        // Use the Book model to find all documents in the 'books' collection
+        const books = await Book.find();
+
+        // Use the User model to find all documents in the 'users' collection
+        const user = await User.find();
+
+        // Send a 200 OK response with a JSON object data
+        return response.status(200).json({ 
+            user: user, 
+            books: books //Array of book document
+        });
+
+    }
+    catch (error) {
+        console.log(error.message);
+        return response.status(500).send({ message: error.message });
+    }
+})
+
 //Route to register
 router.post('/register', async (request, response) => {
     try {
