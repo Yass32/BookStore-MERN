@@ -22,7 +22,7 @@ This is a full-stack web application for managing a bookstore, built using the *
 
 ### Backend
 ```
-backend/
+client/
 ├── config.js          # Configuration (e.g., PORT, MongoDB URL)
 ├── index.js           # Entry point for the Express server
 ├── models/            # Mongoose schemas for User and Book
@@ -35,7 +35,7 @@ backend/
 
 ### Frontend
 ```
-frontend/
+server/
 ├── public/            # Static assets (e.g., icons)
 ├── src/
 │   ├── components/    # Reusable React components
