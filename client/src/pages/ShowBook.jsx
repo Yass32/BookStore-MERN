@@ -6,7 +6,7 @@ import BackButton from '../components/BackButton';
 import { Spinner } from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 import backgroundImage from '../assets/background3.webp';
-const API_URL = import.meta.env.VITE_API_URL;
+import { API_URL } from "../config";
 
 const ShowBook = () => {
     const [books, setBooks] = useState({});

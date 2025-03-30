@@ -8,7 +8,7 @@ import {MdOutlineAddBox} from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
 import backgroundImage from '../assets/background3.webp';
-const API_URL = import.meta.env.VITE_API_URL;
+import { API_URL } from "../config";
 
 const Home = () => {
     const [count, setCount] = useState("0");
