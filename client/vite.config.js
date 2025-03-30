@@ -1,7 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-})
+  server: {
+    proxy: {
+      '/api': 'https://api.render.com/deploy/srv-cvkj14gdl3ps738k1hb0?key=BwfaQ0rnB-0',
+    },
+  },
+  build: {
+    outDir: 'dist', // Ensure the output directory is correct
+  },
+});
