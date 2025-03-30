@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Spinner } from '../components/Spinner';
 import axios from 'axios';
 import backgroundImage from '../assets/background3.webp';
+import { VITE_API_URL } from "../config";
 
 const Login = () => {
     const [username, setUserName] = useState("");
@@ -23,7 +24,7 @@ const Login = () => {
 
         setLoading(true);
         axios
-            .post(`http://localhost:5555/books/`, user)
+            .post(`${VITE_API_URL}/books/`, user)
             .then((response) => {                
                 setLoading(false);
                 const userId = response.data._id;
