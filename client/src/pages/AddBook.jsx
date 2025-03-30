@@ -6,6 +6,7 @@ import { Spinner } from '../components/Spinner';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import backgroundImage from '../assets/background3.webp';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const CreateBook = () => {
     const [title, setTitle] = useState("");
@@ -29,7 +30,7 @@ const CreateBook = () => {
 
         setLoading(true);
         axios
-            .post( `http://localhost:5555/books/${userId}`, book)
+            .post( `${API_URL}/books/${userId}`, book)
             .then(() => {                
                 setLoading(false);
                 enqueueSnackbar("Book added successfully", { variant: "success"});

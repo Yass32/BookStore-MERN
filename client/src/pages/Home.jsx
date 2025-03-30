@@ -8,6 +8,7 @@ import {MdOutlineAddBox} from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
 import backgroundImage from '../assets/background3.webp';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Home = () => {
     const [count, setCount] = useState("0");
@@ -20,7 +21,7 @@ const Home = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get( `http://localhost:5555/books/${userId}`)
+            .get( `${API_URL}/books/${userId}`)
             .then((response) => {
                 setBooks(response.data.data);
                 setCount(response.data.count);
