@@ -1,1 +1,1 @@
-export const VITE_API_URL="https://api.render.com/deploy/srv-cvkj14gdl3ps738k1hb0?key=BwfaQ0rnB-0"
+export const VITE_API_URL="https://bookstore-mern-jcy4.onrender.com";
