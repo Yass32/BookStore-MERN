@@ -6,7 +6,7 @@ import { Spinner } from '../components/Spinner';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import backgroundImage from '../assets/background3.webp';
-import { API_URL } from "../config";
+import { VITE_API_URL } from "../config";
 const EditBook = () => {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
@@ -21,7 +21,7 @@ const EditBook = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`${API_URL}/books/${userId}/${id}`)
+            .get(`${VITE_API_URL}/books/${userId}/${id}`)
             .then((response) => {
                 setTitle(response.data.title);
                 setAuthor(response.data.author);
@@ -47,7 +47,7 @@ const EditBook = () => {
 
         setLoading(true);
         axios
-            .put(`${API_URL}/books/${userId}/${id}`, book)
+            .put(`${VITE_API_URL}/books/${userId}/${id}`, book)
             .then((response) => {
                 setTitle(response.data.title);
                 setAuthor(response.data.author);

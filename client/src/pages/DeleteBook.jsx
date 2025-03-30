@@ -6,7 +6,7 @@ import { Spinner } from '../components/Spinner';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import backgroundImage from '../assets/background3.webp';
-import { API_URL } from "../config";
+import { VITE_API_URL } from "../config";
 
 const DeleteBook = () => {
     const [title, setTitle] = useState("");
@@ -20,7 +20,7 @@ const DeleteBook = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`${API_URL}/books/${userId}/${id}`)
+            .get(`${VITE_API_URL}/books/${userId}/${id}`)
             .then((response) => {
                 setTitle(response.data.title);
                 setAuthor(response.data.author);
@@ -35,7 +35,7 @@ const DeleteBook = () => {
     const handleDeleteBook = () => {
         setLoading(true);
         axios
-            .delete(`${API_URL}/books/${userId}/${id}`)
+            .delete(`${VITE_API_URL}/books/${userId}/${id}`)
             .then(() => {
                 setLoading(false);
                 enqueueSnackbar("Book deleted successfully", { variant: "success"});

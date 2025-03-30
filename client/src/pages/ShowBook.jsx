@@ -6,7 +6,7 @@ import BackButton from '../components/BackButton';
 import { Spinner } from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 import backgroundImage from '../assets/background3.webp';
-import { API_URL } from "../config";
+import { VITE_API_URL } from "../config";
 
 const ShowBook = () => {
     const [books, setBooks] = useState({});
@@ -18,7 +18,7 @@ const ShowBook = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`${API_URL}/books/${userId}/${id}`)
+            .get(`${VITE_API_URL}/books/${userId}/${id}`)
             .then((response) => {
                 setBooks(response.data);
                 setLoading(false);
