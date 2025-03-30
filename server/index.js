@@ -1,7 +1,7 @@
 import express from "express";
 import {PORT, mongoURL} from "./config.js";
 import mongoose from "mongoose";
-import bookRoutes from "../backend/routes/bookRoutes.js";
+import bookRoutes from "../server/routes/bookRoutes.js";
 import cors from "cors";
 
 //An Express application instance is created.
