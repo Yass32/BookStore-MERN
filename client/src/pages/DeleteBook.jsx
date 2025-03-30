@@ -5,6 +5,7 @@ import BackButton from '../components/BackButton';
 import { Spinner } from '../components/Spinner';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import backgroundImage from '../assets/background3.webp';
 
 const DeleteBook = () => {
     const [title, setTitle] = useState("");
@@ -48,18 +49,18 @@ const DeleteBook = () => {
     
 
     return (
-        <div className='p-4'>
-            <BackButton/>    
+        <div className='p-4 bg-cover bg-center h-screen text-white' style={{ backgroundImage: `url(${backgroundImage})` }}> 
+            <BackButton userId={userId}/>    
             <h1 className='text-3xl my-8'>Delete Book</h1>
             {loading ? (
                 <Spinner/>
             ) : (
-                <div className='flex flex-col border-2 border-blue-950 rounded-xl w-[600px] p-4 mx-auto'>
+                <div className='flex flex-col bg-blue-950 rounded-xl w-[600px] p-4 mx-auto'>
                     <div className='my-3'>
-                        <p className='text-xl text-gray-500 text-center'>Are you sure you want to delete <i>{title}</i> by <i>{author}</i>?</p>
+                        <p className='text-xl  text-center'>Are you sure you want to delete <i>{title}</i> by <i>{author}</i>?</p>
                     </div>
-                    <div className='py-6'>
-                        <button className='mx-28 text-xl text-gray-300 bg-red-700 rounded-md w-[60%] p-2' onClick={handleDeleteBook}>
+                    <div className='py-6 flex'>
+                        <button className='mx-auto bg-red-600 rounded-md p-2 hover:bg-red-800 transition-all duration-200' onClick={handleDeleteBook}>
                             Delete
                         </button>
                     </div>

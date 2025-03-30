@@ -12,30 +12,30 @@ const BooksTable = ({ books, userId }) => {
         <table className='w-full text-gray-500 border-separate border-spacing-2'>
             <thead>
                 <tr>
-                    <th className='border border-slate-600 rounded-md'>No</th>
-                    <th className='border border-slate-600 rounded-md'>Title</th>
-                    <th className='border border-slate-600 rounded-md max-md:hidden'>Author</th>
-                    <th className='border border-slate-600 rounded-md max-md:hidden'>Publish Year</th>
-                    <th className='border border-slate-600 rounded-md'>Operations</th>
+                    <th className='bg-blue-950 text-white rounded-md'>No</th>
+                    <th className='bg-blue-950 text-white rounded-md'>Title</th>
+                    <th className='bg-blue-950 text-white rounded-md max-md:hidden'>Author</th>
+                    <th className='bg-blue-950 text-white rounded-md max-md:hidden'>Publish Year</th>
+                    <th className='bg-blue-950 text-white rounded-md'>Operations</th>
                 </tr>
             </thead>
             <tbody>
                 {books.map((book, index) => {
                     return (
                         <tr key={book._id} className='h-8 text-center'>
-                            <td className='border border-slate-700 rounded-md '>
+                            <td className='bg-blue-950 text-white rounded-md '>
                                 {index + 1}
                             </td>
-                            <td className='border border-slate-700 rounded-md'>
+                            <td className='bg-blue-950 text-white rounded-md'>
                                 {book.title}
                             </td>
-                            <td className='border border-slate-700 rounded-md max-md:hidden'>
+                            <td className='bg-blue-950 text-white rounded-md max-md:hidden'>
                                 {book.author}
                             </td>
-                            <td className='border border-slate-700 rounded-md max-md:hidden'>
+                            <td className='bg-blue-950 text-white rounded-md max-md:hidden'>
                                 {book.publishedYear}
                             </td>
-                            <td className='border border-slate-700 rounded-md'>
+                            <td className='bg-blue-950 text-white rounded-md'>
                                 <div className='flex justify-evenly'>
                                     <Link to={`/${userId}/read/${book._id}`}>
                                         <BsInfoCircle className='text-2xl text-green-800 hover:scale-110' />

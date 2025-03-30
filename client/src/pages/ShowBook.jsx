@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import { Spinner } from '../components/Spinner';
 import { useSnackbar } from 'notistack';
+import backgroundImage from '../assets/background3.webp';
 
 const ShowBook = () => {
     const [books, setBooks] = useState({});
@@ -30,13 +31,13 @@ const ShowBook = () => {
     }, []);
 
     return (
-        <div className='p-4'>
+        <div className='p-4 bg-cover bg-center h-screen' style={{ backgroundImage: `url(${backgroundImage})` }}>  
             <BackButton userId={userId}/>    
-            <h1 className='text-3xl my-8'>Book Details</h1>
+            <h1 className='text-3xl my-8 text-white'>Book Details</h1>
             {loading ? (
                 <Spinner/>
             ) : (
-                <div className='flex flex-col border-2 border-blue-950 w-fit p-4'>
+                <div className='flex flex-col mx-auto bg-blue-950 w-fit p-4 text-white rounded-md'>
                     <div className='py-3'>
                         <span className='font-semibold mr-28'>ID</span>
                         <span>{books._id}</span>

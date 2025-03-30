@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { Spinner } from '../components/Spinner';
 import axios from 'axios';
+import backgroundImage from '../assets/background3.webp';
 
 const Login = () => {
     const [username, setUserName] = useState("");
@@ -41,14 +42,14 @@ const Login = () => {
     
 
     return (
-        <div className='p-4'> 
-            <h1 className='text-3xl my-8'>Login</h1>
+        <div className='p-4 bg-cover bg-center h-screen' style={{ backgroundImage: `url(${backgroundImage})` }}>  
+            <h1 className='text-3xl my-8 text-white'>Login</h1>
             {loading ? (
                 <Spinner/>
             ) : (
-                <div className='flex flex-col border-2 border-blue-950 rounded-xl w-[600px] p-4 mx-auto'>
+                <div className='flex flex-col rounded-xl w-[600px] p-4 mx-auto'>
                     <div className='my-3'>
-                        <label className='text-xl text-gray-500'>Username:</label>
+                        <label className='text-xl text-white'>Username:</label>
                         <input
                         type='text'
                         value={username}
@@ -57,7 +58,7 @@ const Login = () => {
                         />
                     </div>
                     <div className='py-3'>
-                        <label className='text-xl text-gray-500'>Password:</label>
+                        <label className='text-xl text-white'>Password:</label>
                         <input
                         type='text'
                         value={password}
@@ -67,11 +68,11 @@ const Login = () => {
                     </div>
                     <div className='py-6'>
                         <p className='mb-3 text-red-600'>{message}</p>
-                        <button className='mx-28 text-xl text-gray-300 bg-blue-950 rounded-md w-[60%] p-2' onClick={handleLogin}>
+                        <button className='mx-28 text-xl text-white bg-blue-950 rounded-md w-[60%] p-2' onClick={handleLogin}>
                             Sign in
                         </button>
                         <Link to='/register' >
-                        <p className='flex justify-end text-gray-500 text-xs mt-5 hover:text-sky-600'> Are you not a bookstore member? Register Here</p>
+                        <p className='flex justify-end text-gray-300 text-xs mt-5 hover:text-sky-600'> Are you not a bookstore member? Register Here</p>
                         </Link>
                         
                     </div>

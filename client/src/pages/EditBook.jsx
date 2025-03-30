@@ -5,6 +5,7 @@ import BackButton from '../components/BackButton';
 import { Spinner } from '../components/Spinner';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import backgroundImage from '../assets/background3.webp';
 
 const EditBook = () => {
     const [title, setTitle] = useState("");
@@ -25,6 +26,7 @@ const EditBook = () => {
                 setTitle(response.data.title);
                 setAuthor(response.data.author);
                 setPublishedYear(response.data.publishedYear);
+                console.log(response.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -66,42 +68,45 @@ const EditBook = () => {
     
 
     return (
-        <div className='p-4'>
-            <BackButton/>    
-            <h1 className='text-3xl my-8'>Edit Book</h1>
+        <div className='p-4 bg-cover bg-center h-screen' style={{ backgroundImage: `url(${backgroundImage})` }}> 
+            <BackButton userId={userId}/>    
+            <h1 className='text-3xl my-8 text-white'>Edit Book</h1>
             {loading ? (
                 <Spinner/>
             ) : (
-                <div className='flex flex-col border-2 border-blue-950 rounded-xl w-[600px] p-4 mx-auto'>
-                    <div className='my-3'>
-                        <label className='text-xl text-gray-500'>Title:</label>
+                <div className='flex flex-col rounded-xl w-[600px] p-4 mx-auto'>
+                    <div>
+                        <label className='text-xl text-white'>Title:</label>
                         <input
                         type='text'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        placeholder={title}
                         className='border-2 border-gray-500 px-4 py-1 w-full'
                         />
                     </div>
                     <div className='py-3'>
-                        <label className='text-xl text-gray-500'>Author:</label>
+                        <label className='text-xl text-white'>Author:</label>
                         <input
                         type='text'
                         value={author}
                         onChange={(e) => setAuthor(e.target.value)}
+                        placeholder={author}
                         className='border-2 border-gray-500 px-4 py-1 w-full'
                         />
                     </div>
                     <div className='py-3'>
-                        <label className='text-xl text-gray-500'>Published Year:</label>
+                        <label className='text-xl text-white'>Published Year:</label>
                         <input
                         type='number'
                         value={publishedYear}
                         onChange={(e) => setPublishedYear(e.target.value)}
+                        placeholder={publishedYear}
                         className='border-2 border-gray-500 px-4 py-1 w-full'
                         />
                     </div>
                     <div className='py-6'>
-                        <button className='mx-28 text-xl text-gray-300 bg-blue-950 rounded-md w-[60%] p-2' onClick={handleEditBook}>
+                        <button className='mx-28 text-xl text-white bg-blue-950 rounded-md w-[60%] p-2' onClick={handleEditBook}>
                             Update
                         </button>
                     </div>

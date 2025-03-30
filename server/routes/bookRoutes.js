@@ -100,8 +100,6 @@ router.get("/:userId", async (request, response) => {
         // Use the Book model to find all documents in the 'books' collection
         const books = await Book.find({userId});
 
-        console.log(books);
-
         // Send a 200 OK response with a JSON object data
         return response.status(200).json({ 
             count: books.length, // Number of books found
