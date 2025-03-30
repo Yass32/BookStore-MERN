@@ -129,7 +129,7 @@ client/
 ## Screenshots
 
 ### Home Page (Table View)
-![Home Page Table View](frontend/public/bookstore.png)
+![Home Page Table View](client/public/bookstore.png)
 
 
 ## License
