@@ -44,8 +44,6 @@ const CreateBook = () => {
     }
 
 
-    
-
     return (
         <div className='p-4 bg-cover bg-center h-screen' style={{ backgroundImage: `url(${backgroundImage})` }}> 
             <BackButton userId={userId}/>    
