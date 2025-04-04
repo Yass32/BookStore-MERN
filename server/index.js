@@ -7,8 +7,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from .env file
 
-const PORT = process.env.PORT || 5000; // Set the port to listen on, defaulting to 5000 if not specified in .env
-const mongoURL = process.env.mongoURL; // MongoDB connection string from environment variables
+const PORT = process.env.PORT || 5555; // Set the port to listen on, defaulting to 5000 if not specified in .env
+const mongoURL = process.env.MONGO_URI; // MongoDB connection string from environment variables
 
 //An Express application instance is created.
 const app = express();
