@@ -1,8 +1,14 @@
 import express from "express";
-import {PORT, mongoURL} from "./config.js";
 import mongoose from "mongoose";
 import bookRoutes from "../server/routes/bookRoutes.js";
 import cors from "cors";
+//The dotenv package is used to load environment variables from a .env file into process.env.
+//This allows you to keep sensitive information like database connection strings and API keys out of your source code.
+import dotenv from "dotenv";
+dotenv.config(); // Load environment variables from .env file
+
+const PORT = process.env.PORT || 5000; // Set the port to listen on, defaulting to 5000 if not specified in .env
+const mongoURL = process.env.mongoURL; // MongoDB connection string from environment variables
 
 //An Express application instance is created.
 const app = express();
